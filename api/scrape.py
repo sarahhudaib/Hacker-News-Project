@@ -9,7 +9,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    self.wfile.write(self.path[1:].encode())
+    self.wfile.write(all_rapper().encode())
     return
     
 res = requests.get("https://news.ycombinator.com/news")
