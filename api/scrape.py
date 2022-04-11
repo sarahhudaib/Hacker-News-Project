@@ -9,7 +9,9 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    self.wfile.write(all_rapper().encode())
+    
+    for line in all_rapper().split("\n"):
+        self.wfile.write(line.encode())
     return
     
 res = requests.get("https://news.ycombinator.com/news")
@@ -44,7 +46,7 @@ def all_rapper():
                     hn.append({'title': title, 'href': href, 'votes': points})
         return sort_stories_by_votes(hn)
     
-    pprint.pprint(create_custom_hn(mega_links, mega_subtext))
+    return create_custom_hn(mega_links, mega_subtext)
 
 
 # print (create_custom_hn(links, subtext))
