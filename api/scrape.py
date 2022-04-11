@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pprint
+import time 
 from http.server import BaseHTTPRequestHandler , HTTPServer
 
 class handler(BaseHTTPRequestHandler):
@@ -11,6 +12,7 @@ class handler(BaseHTTPRequestHandler):
     self.end_headers()
     
     for line in all_rapper().split("\n"):
+        time.sleep(15)
         self.wfile.write(line.encode())
     return
     
